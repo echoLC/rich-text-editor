@@ -1,8 +1,9 @@
-function add(a: number, b: number): number {
-  console.log(a, b)
-  return a + b
-}
+import Editor from './core/Editor'
+import './style/index.css'
+import './style/normalize.css'
 
-add(1, 2)
+const editor = new Editor({
+  id: 'editor',
+})
 
-export default add
+console.log(editor)

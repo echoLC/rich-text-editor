@@ -7,7 +7,12 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, '../dist'),
     filename: 'editor.umd.js',
+    library: 'Editor',
     libraryTarget: 'umd',
+    globalObject: 'this',
+  },
+  resolve: {
+    extensions: ['.js', '.ts'],
   },
   module: {
     rules: [
