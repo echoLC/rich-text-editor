@@ -11,15 +11,17 @@ const appDirectory = fs.realpathSync(process.cwd())
 const resolveApp = relativePath => path.resolve(appDirectory, relativePath)
 
 module.exports = merge(baseConfig, {
-    mode: 'development',
-    devServer: {
-        port: 8088,
-        hot: true,
-        publicPath: resolveApp('example'),
-    },
-    plugins: [
-        new HtmlWebpackPlugin({
-            filename: resolveApp('example/index.html'),
-        }),
-    ],
+  mode: 'development',
+  devServer: {
+    port: 8088,
+    hot: true,
+    contentBase: '.',
+    publicPath: '/',
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: resolveApp('example/basic.html'),
+      inject: true,
+    }),
+  ],
 })
