@@ -1,1 +1,1 @@
-# markdown-editor
+# rich-text-editor

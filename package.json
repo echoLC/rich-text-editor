@@ -1,9 +1,9 @@
 {
-  "name": "markdown-editor",
+  "name": "rich-text-editor",
   "version": "1.0.0",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
-  "repository": "https://github.com/echoLC/markdown-editor.git",
+  "repository": "https://github.com/echoLC/rich-text-editor.git",
   "author": "luochao <luochao@yy.com>",
   "license": "MIT",
   "scripts": {
