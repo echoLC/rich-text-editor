@@ -1,8 +1,8 @@
 import EditorError from '../utils/Error'
-import Toolbar from '../toolbar/index'
+import Toolbar from './Toolbar'
 import CEvent from '../utils/Event'
 
-const DEFAULT_TOOLBAR = ['header', 'bold', 'italic']
+const DEFAULT_TOOLBAR = ['heading', 'bold', 'italic']
 
 export interface EditorOptions {
   id: string
@@ -55,7 +55,11 @@ class Editor {
   }
 
   setTextStyle(type: string) {
-    console.log(type)
+    if (type === 'heading') {
+      document.execCommand('formatBlock', false, 'h1')
+    } else {
+      document.execCommand(type)
+    }
   }
 
   destroy() {}

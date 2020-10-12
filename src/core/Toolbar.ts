@@ -3,10 +3,10 @@ import boldIcon from '../icons/bold.png'
 import italicIcon from '../icons/italic.png'
 import CEvent from '../utils/Event'
 
-const DEFAULT_TOOLBAR = ['header', 'bold', 'italic']
+const DEFAULT_TOOLBAR = ['heading', 'bold', 'italic']
 
 const iconMap = {
-  header: headIcon,
+  heading: headIcon,
   bold: boldIcon,
   italic: italicIcon,
 }
@@ -23,7 +23,6 @@ class Toolbar {
   constructor(options: ToolbarOptions = { event: new CEvent() }) {
     this.toolbar = options.toolbars ?? DEFAULT_TOOLBAR
     this.event = options.event
-    console.log(this.event)
   }
 
   initToolbar() {
