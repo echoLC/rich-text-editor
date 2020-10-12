@@ -9,9 +9,9 @@
   "scripts": {
     "build": "webpack --config ./build/webpack.prod.conf.js",
     "dev": "webpack serve --config ./build/webpack.dev.conf.js",
-    "lint": "eslint 'src/**/*.{js,ts}'",
-    "lint:fix": "eslint --fix 'src/**/*.{js,ts}'",
-    "prettier": "prettier --write 'src/**/*.{js,ts}'",
+    "lint": "eslint \"src/**/*.{js,ts}\"",
+    "lint:fix": "eslint --fix \"src/**/*.{js,ts}\"",
+    "prettier": "prettier --write \"src/**/*.{js,ts}\"",
     "test": "jest"
   },
   "devDependencies": {
