@@ -2,8 +2,8 @@ import Editor from './core/Editor'
 import './style/index.css'
 import './style/normalize.css'
 
-const editor = new Editor({
-  id: 'editor',
+const editor = new Editor('#editor', {
+  value: '<div>test</div>',
 })
 
 console.log(editor)

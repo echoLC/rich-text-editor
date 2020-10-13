@@ -1,27 +1,17 @@
-import headIcon from '../icons/header.png'
-import boldIcon from '../icons/bold.png'
-import italicIcon from '../icons/italic.png'
+import { DEFAULT_TOOLBAR_BUTTONS, ToolbarButton } from './default'
 import CEvent from '../utils/Event'
 
-const DEFAULT_TOOLBAR = ['heading', 'bold', 'italic']
-
-const iconMap = {
-  heading: headIcon,
-  bold: boldIcon,
-  italic: italicIcon,
-}
-
 export interface ToolbarOptions {
-  toolbars?: string[]
+  toolbars?: ToolbarButton[]
   event: CEvent
 }
 
 class Toolbar {
-  toolbar: string[]
+  toolbar: ToolbarButton[]
   event: CEvent
 
   constructor(options: ToolbarOptions = { event: new CEvent() }) {
-    this.toolbar = options.toolbars ?? DEFAULT_TOOLBAR
+    this.toolbar = options.toolbars ?? DEFAULT_TOOLBAR_BUTTONS
     this.event = options.event
   }
 
@@ -29,16 +19,16 @@ class Toolbar {
     const toolbarContainer = document.createElement('div')
     toolbarContainer.className = 'editor-toolbar'
     for (let i = 0; i < this.toolbar.length; i++) {
-      const bar = this.toolbar[i]
+      const item = this.toolbar[i]
       const button = document.createElement('button')
-      button.id = `editorToolbarButton-${bar}`
-      button.className = `editor-toolbar-button editor-toolbar-button-${bar}`
+      button.id = `editorToolbarButton-${item.name}`
+      button.className = `editor-toolbar-button editor-toolbar-button-${item.name}`
       const img = document.createElement('img')
-      img.src = iconMap[bar as keyof typeof iconMap]
+      img.src = item.icon
       button.appendChild(img)
 
       button.addEventListener('click', () => {
-        this.event.emit(`EditorEvent-${bar}`)
+        this.event.emit(`EditorEvent-${item.name}`)
       })
 
       toolbarContainer.appendChild(button)
@@ -46,8 +36,8 @@ class Toolbar {
     return toolbarContainer
   }
 
-  addOne(feature: string) {
-    this.toolbar.push(feature)
+  addButton(button: ToolbarButton) {
+    this.toolbar.push(button)
   }
 }
 
