@@ -12,6 +12,13 @@ const resolveApp = relativePath => path.resolve(appDirectory, relativePath)
 
 module.exports = merge(baseConfig, {
   mode: 'development',
+  entry: {
+    basic: './example/basic.ts',
+  },
+  output: {
+    path: path.resolve(__dirname, '../example'),
+    filename: 'basic.js',
+  },
   devServer: {
     port: 8088,
     hot: true,

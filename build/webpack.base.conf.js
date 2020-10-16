@@ -1,16 +1,6 @@
-const path = require('path')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
-  entry: {
-    index: './src/index.ts',
-  },
-  output: {
-    path: path.resolve(__dirname, '../dist'),
-    filename: 'editor.umd.js',
-    library: 'Editor',
-    libraryTarget: 'umd',
-    globalObject: 'this',
-  },
   resolve: {
     extensions: ['.js', '.ts'],
   },
@@ -22,7 +12,18 @@ module.exports = {
       },
       {
         test: /\.css$/i,
-        use: ['style-loader', 'css-loader'],
+        use: [
+          process.env.NODE_ENV === 'development' ? 'style-loader' : MiniCssExtractPlugin.loader,
+          'css-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              postcssOptions: {
+                plugins: () => [require('autoprefixer')({ grid: true, remove: false })],
+              },
+            },
+          },
+        ],
       },
       {
         test: /\.(png|jpg|gif)$/i,
