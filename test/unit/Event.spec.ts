@@ -3,7 +3,7 @@ import Event from '../../src/utils/Event'
 const eventType = 'eventType'
 
 describe('EventBus', () => {
-  test('should can listen a specify event', () => {
+  test('should can subscribe a specify event', () => {
     const event = new Event()
     const fn = jest.fn()
 
@@ -14,7 +14,19 @@ describe('EventBus', () => {
     expect(fn).toBeCalledTimes(1)
   })
 
-  test('should can off a specify event', () => {
+  test('should can subscribe multiple times', () => {
+    const event = new Event()
+    const fn = jest.fn()
+
+    event.on(eventType, fn)
+    event.on(eventType, fn)
+
+    event.emit(eventType)
+
+    expect(fn).toBeCalledTimes(2)
+  })
+
+  test('should can unsubscribe a specify event', () => {
     const event = new Event()
     const fn = jest.fn()
 
@@ -26,7 +38,7 @@ describe('EventBus', () => {
     expect(fn).not.toBeCalled()
   })
 
-  test('should can off all listenner', () => {
+  test('should can subscribe all listenner', () => {
     const event = new Event()
     const otherEventType = 'otherEventType'
     const fn1 = jest.fn()

@@ -28,6 +28,7 @@ class Toolbar {
       img.src = item.icon
       button.appendChild(img)
 
+      // 绑定button的点击事件，通知编辑器点击了toolbar的某个按钮
       button.addEventListener('click', () => {
         const action = toolbarButtonClickAction(item.name, null)
         this.event.emit(action.type)
