@@ -21,7 +21,7 @@ class CEvent {
     if (eventList != null) {
       for (let i = 0; i < eventList.length; i++) {
         const fn = eventList[i]
-        fn(...args)
+        fn.call(null, ...args)
       }
     }
   }

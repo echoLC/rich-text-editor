@@ -5,5 +5,3 @@ import './style/normalize.css'
 const editor = new Editor('#editor', {
   value: '<div>test</div>',
 })
-
-console.log(editor)

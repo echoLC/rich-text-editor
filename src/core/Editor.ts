@@ -7,8 +7,8 @@ import { DEFAULT_TOOLBAR_BUTTONS, ToolbarButton } from './default'
 import { toolbarButtonClickAction } from './Action'
 
 export interface EditorOptions {
-  value: string
-  toolbars: ToolbarButton[]
+  value?: string
+  toolbars?: ToolbarButton[]
 }
 
 class Editor {
