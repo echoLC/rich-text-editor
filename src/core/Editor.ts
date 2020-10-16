@@ -1,10 +1,14 @@
 import EditorError from '../utils/Error'
 import Toolbar from './Toolbar'
+import ContentEditable from './ContentEditable'
 import CEvent from '../utils/Event'
-import { DEFAULT_TOOLBAR_BUTTONS } from './default'
+import generateUniqueId from '../utils/generateId'
+import { DEFAULT_TOOLBAR_BUTTONS, ToolbarButton } from './default'
+import { toolbarButtonClickAction } from './Action'
 
 export interface EditorOptions {
   value: string
+  toolbars: ToolbarButton[]
 }
 
 class Editor {
@@ -13,25 +17,31 @@ class Editor {
   event: CEvent
   value: string | undefined
   id: string
+  contentEditable: ContentEditable
+  container?: HTMLElement
 
   constructor(selector: string | HTMLElement, options?: EditorOptions) {
     this.selector = selector
     this.value = options?.value
-    this.id = this.getUniqueId()
+    this.id = generateUniqueId('Editor')
 
     this.event = new CEvent()
 
     for (let i = 0; i < DEFAULT_TOOLBAR_BUTTONS.length; i++) {
       const type = DEFAULT_TOOLBAR_BUTTONS[i].name
+      const action = toolbarButtonClickAction(type)
 
-      this.event.on(`EditorEvent-${type}`, () => {
+      this.event.on(action.type, () => {
         this.setTextStyle(type)
       })
     }
 
     this.toolbar = new Toolbar({
       event: this.event,
+      toolbars: options?.toolbars,
     })
+
+    this.contentEditable = new ContentEditable(this.value)
 
     this.init()
   }
@@ -51,29 +61,14 @@ class Editor {
     }
     container.className = 'editor-container'
     if (container.id === '') {
-      container.id = `EditorContainer-${this.id}`
+      container.id = generateUniqueId(`EditorContainer`)
     }
-    const contentArea = this.initContentArea()
+    const contentArea = this.contentEditable.element
     const toolbar = this.toolbar.initToolbar()
     container.appendChild(toolbar)
     container.appendChild(contentArea)
-  }
 
-  private initContentArea() {
-    const container = document.createElement('div')
-    container.className = 'editor-content'
-    container.id = `EditorContent-${this.id}`
-    container.contentEditable = 'true'
-    container.className = 'editor-content'
-    if (this.value != null) {
-      container.innerHTML = this.value
-    }
-    return container
-  }
-
-  private getUniqueId() {
-    const now = Date.now()
-    return `Editor-${now}`
+    this.container = container
   }
 
   setTextStyle(type: string) {
@@ -84,7 +79,11 @@ class Editor {
     }
   }
 
-  destroy() {}
+  destroy() {
+    if (this.container != null) {
+      this.container.innerHTML = ''
+    }
+  }
 }
 
 export default Editor

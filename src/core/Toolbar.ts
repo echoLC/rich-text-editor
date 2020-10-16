@@ -1,4 +1,5 @@
 import { DEFAULT_TOOLBAR_BUTTONS, ToolbarButton } from './default'
+import { toolbarButtonClickAction } from './Action'
 import CEvent from '../utils/Event'
 
 export interface ToolbarOptions {
@@ -28,7 +29,8 @@ class Toolbar {
       button.appendChild(img)
 
       button.addEventListener('click', () => {
-        this.event.emit(`EditorEvent-${item.name}`)
+        const action = toolbarButtonClickAction(item.name, null)
+        this.event.emit(action.type)
       })
 
       toolbarContainer.appendChild(button)
