@@ -24,7 +24,8 @@
     "node_modules",
     "dist",
     "test",
-    "examples"
+    "examples",
+    "cypress"
   ]
 }
 
