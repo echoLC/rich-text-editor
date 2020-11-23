@@ -25,4 +25,3 @@ jobs:
         browser: chrome
         start: yarn run dev
         wait-on: 'http://localhost:8088'
-    - run: cypress run  
