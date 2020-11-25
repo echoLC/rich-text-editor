@@ -21,12 +21,7 @@ class ConventionalChangelog extends Plugin {
 
   async getConventionalConfig(latestVersion) {
     const { increment, isPreRelease, preReleaseId } = this.config.getContext('version')
-    const version = await this.getIncrementedVersion({
-      increment,
-      latestVersion,
-      isPreRelease,
-      preReleaseId,
-    })
+    const version = latestVersion
     console.log(version)
 
     this.setContext({ version })
