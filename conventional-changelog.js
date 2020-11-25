@@ -11,27 +11,18 @@ class ConventionalChangelog extends Plugin {
     return options[namespace]
   }
 
-  // async getChangelog(latestVersion) {
-  //   const { version, previousTag, currentTag } = await this.getConventionalConfig(latestVersion)
-  //   this.setContext({ version, previousTag, currentTag })
-  //   const changelog = await this.generateChangelog()
-  //   console.log('changelog', changelog)
-  //   return changelog
-  // }
-
   async bump(version) {
     this.setContext({ version })
     const { previousTag, currentTag } = await this.getConventionalConfig()
     this.setContext({ previousTag, currentTag })
     const changelog = await this.generateChangelog()
-    console.log('changelog', changelog)
     this.setContext({ changelog })
   }
 
   async getConventionalConfig() {
     const version = this.getContext('version')
 
-    const previousTag = this.getContext('latestTag')
+    const previousTag = this.config.getContext('latestTag')
     const tagTemplate =
       this.options.tagName || ((previousTag || '').match(/^v/) ? 'v${version}' : '${version}')
     const currentTag = tagTemplate.replace('${version}', version)
