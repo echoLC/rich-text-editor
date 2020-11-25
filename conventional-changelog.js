@@ -38,6 +38,7 @@ class ConventionalChangelog extends Plugin {
 
   getChangelogStream(options = {}) {
     const { version, previousTag, currentTag } = this.getContext()
+    console.log(version, previousTag, currentTag)
     return conventionalChangelog(
       Object.assign(options, this.options),
       { version, previousTag, currentTag },
