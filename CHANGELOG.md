@@ -1,3 +1,5 @@
+* fix: 完善了release流程 (d2bb8e1)
+
 * fix: 完善了release流程 (d2e7cec)
 * fix: 完善了插件 (a9d50fe)
 
