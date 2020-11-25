@@ -26,7 +26,6 @@ class ConventionalChangelog extends Plugin {
     const tagTemplate =
       this.options.tagName || ((previousTag || '').match(/^v/) ? 'v${version}' : '${version}')
     const currentTag = tagTemplate.replace('${version}', version)
-    console.log(previousTag, currentTag)
 
     return { version, previousTag, currentTag }
   }
