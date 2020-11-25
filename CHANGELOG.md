@@ -1,3 +1,6 @@
+* fix: 完善了release流程 (d2e7cec)
+* fix: 完善了插件 (a9d50fe)
+
 ## [1.1.4](https://github.com/echoLC/rich-text-editor/compare/v1.1.2...v1.1.4) (2020-11-25)
 
 
