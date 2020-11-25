@@ -24,7 +24,7 @@ class ConventionalChangelog extends Plugin {
     const { previousTag, currentTag } = await this.getConventionalConfig()
     this.config.setContext({ previousTag, currentTag })
     const changelog = await this.generateChangelog()
-
+    console.log('changelog', changelog)
     this.config.setContext({ changelog })
   }
 
