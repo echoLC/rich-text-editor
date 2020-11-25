@@ -1,3 +1,8 @@
+* fix: test get changelog (1721e9c)
+* fix: test get changelog (9e2b802)
+* fix: test release123 (fe6d184)
+* fix: test release123 (8889282)
+
 * fix: test release123 (ac47a80)
 * fix: test release123 (c997ee0)
 
