@@ -20,22 +20,22 @@ class ConventionalChangelog extends Plugin {
   // }
 
   async bump(version) {
-    this.config.setContext({ version })
+    this.setContext({ version })
     const { previousTag, currentTag } = await this.getConventionalConfig()
-    this.config.setContext({ previousTag, currentTag })
+    this.setContext({ previousTag, currentTag })
     const changelog = await this.generateChangelog()
     console.log('changelog', changelog)
-    this.config.setContext({ changelog })
+    this.setContext({ changelog })
   }
 
   async getConventionalConfig() {
     // const { increment, isPreRelease, preReleaseId } = this.config.getContext('version')
-    const version = this.config.getContext('version')
+    const version = this.getContext('version')
     console.log('version', version)
 
     // this.setContext({ version })
 
-    const previousTag = this.config.getContext('latestTag')
+    const previousTag = this.getContext('latestTag')
     const tagTemplate =
       this.options.tagName || ((previousTag || '').match(/^v/) ? 'v${version}' : '${version}')
     const currentTag = tagTemplate.replace('${version}', version)
@@ -66,7 +66,7 @@ class ConventionalChangelog extends Plugin {
 
   async writeChangelog() {
     const { infile } = this.options
-    let { changelog } = this.config.getContext()
+    let { changelog } = this.getContext()
 
     let hasInfile = false
     try {
