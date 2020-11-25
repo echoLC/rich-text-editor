@@ -21,8 +21,8 @@ class ConventionalChangelog extends Plugin {
 
   async bump(version) {
     this.setContext({ version })
-    const { version, previousTag, currentTag } = await this.getConventionalConfig(latestVersion)
-    this.setContext({ version, previousTag, currentTag })
+    const { previousTag, currentTag } = await this.getConventionalConfig(latestVersion)
+    this.setContext({ previousTag, currentTag })
     const changelog = await this.generateChangelog()
     console.log('changelog', changelog)
     return changelog
