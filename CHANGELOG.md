@@ -1,3 +1,10 @@
+## [1.1.18](https://github.com/echoLC/rich-text-editor/compare/v1.1.17...v1.1.18) (2020-11-25)
+
+
+### Bug Fixes
+
+* remove some log ([fd8e8da](https://github.com/echoLC/rich-text-editor/commit/fd8e8da8e948f3c35932a8c21a7f346ba407495c))
+
 ## [1.1.17](https://github.com/echoLC/rich-text-editor/compare/v1.1.15...v1.1.17) (2020-11-25)
 
 
