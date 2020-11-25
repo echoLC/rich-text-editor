@@ -12,46 +12,32 @@ class ConventionalChangelog extends Plugin {
   }
 
   async getChangelog(latestVersion) {
-    const { previousTag, currentTag } = await this.getConventionalConfig(latestVersion)
-    this.setContext({ previousTag, currentTag })
+    const { version, previousTag, currentTag } = await this.getConventionalConfig(latestVersion)
+    this.setContext({ version, previousTag, currentTag })
     return this.generateChangelog()
   }
 
-  async bump(version) {
-    this.setContext({ version })
-    // const { previousTag, currentTag } = await this.getConventionalConfig()
-    // this.setContext({ previousTag, currentTag })
-    this.getChangelog(this.context.latestVersion)
-  }
-
-  getIncrementedVersion({ increment, latestVersion, isPreRelease, preReleaseId }) {
-    this.setContext({
+  async getConventionalConfig(latestVersion) {
+    const { increment, isPreRelease, preReleaseId } = this.config.getContext('version')
+    const version = await this.getIncrementedVersion({
+      increment,
       latestVersion,
       isPreRelease,
-      increment,
       preReleaseId,
     })
-  }
 
-  async getConventionalConfig(latestVersion) {
-    const version = this.context.version
-
-    // const { increment, isPreRelease, preReleaseId } = this.config.getContext('version');
-    // const version = await this.getIncrementedVersion({ increment, latestVersion, isPreRelease, preReleaseId });
-
-    console.log('getIncrementedVersion', version)
+    this.setContext({ version })
 
     const previousTag = this.config.getContext('latestTag')
     const tagTemplate =
       this.options.tagName || ((previousTag || '').match(/^v/) ? 'v${version}' : '${version}')
     const currentTag = tagTemplate.replace('${version}', version)
 
-    return { previousTag, currentTag }
+    return { version, previousTag, currentTag }
   }
 
   getChangelogStream(options = {}) {
     const { version, previousTag, currentTag } = this.getContext()
-    console.log(version, previousTag, currentTag)
     return conventionalChangelog(
       Object.assign(options, this.options),
       { version, previousTag, currentTag },
