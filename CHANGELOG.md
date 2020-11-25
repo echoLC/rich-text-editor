@@ -1,3 +1,5 @@
+* fix: 完善了release流程 (023b257)
+
 * fix: 完善了release流程 (d2bb8e1)
 
 * fix: 完善了release流程 (d2e7cec)
