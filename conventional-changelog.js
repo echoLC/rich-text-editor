@@ -25,6 +25,7 @@ class ConventionalChangelog extends Plugin {
       isPreRelease,
       preReleaseId,
     })
+    console.log(version)
 
     this.setContext({ version })
 
