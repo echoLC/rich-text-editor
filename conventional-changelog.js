@@ -11,29 +11,39 @@ class ConventionalChangelog extends Plugin {
     return options[namespace]
   }
 
-  async getChangelog(latestVersion) {
-    const { version, previousTag, currentTag } = await this.getConventionalConfig(latestVersion)
-    this.setContext({ version, previousTag, currentTag })
+  // async getChangelog(latestVersion) {
+  //   const { version, previousTag, currentTag } = await this.getConventionalConfig(latestVersion)
+  //   this.setContext({ version, previousTag, currentTag })
+  //   return this.generateChangelog()
+  // }
+
+  async bump(version) {
+    this.setContext({ version })
+    const { previousTag, currentTag } = await this.getConventionalConfig()
+    this.setContext({ previousTag, currentTag })
     return this.generateChangelog()
   }
 
-  async getConventionalConfig(latestVersion) {
-    const { increment, isPreRelease, preReleaseId } = this.config.getContext('version')
-    const version = await this.getIncrementedVersion({
-      increment,
+  getIncrementedVersion({ increment, latestVersion, isPreRelease, preReleaseId }) {
+    this.setContext({
       latestVersion,
       isPreRelease,
+      increment,
       preReleaseId,
     })
+  }
 
-    this.setContext({ version })
+  async getConventionalConfig() {
+    const version = this.context.version
+
+    console.log('getIncrementedVersion', version)
 
     const previousTag = this.config.getContext('latestTag')
     const tagTemplate =
       this.options.tagName || ((previousTag || '').match(/^v/) ? 'v${version}' : '${version}')
     const currentTag = tagTemplate.replace('${version}', version)
 
-    return { version, previousTag, currentTag }
+    return { previousTag, currentTag }
   }
 
   getChangelogStream(options = {}) {

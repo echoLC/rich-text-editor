@@ -1,3 +1,19 @@
+## [1.1.4](https://github.com/echoLC/rich-text-editor/compare/v1.1.2...v1.1.4) (2020-11-25)
+
+
+### Bug Fixes
+
+* 完善了插件 ([a9d50fe](https://github.com/echoLC/rich-text-editor/commit/a9d50feda8b438329bff555b283b51994efd9d0d))
+
+## [1.1.3](https://github.com/echoLC/rich-text-editor/compare/v1.1.2...v1.1.3) (2020-11-25)
+
+
+### Bug Fixes
+
+* 完善了插件 ([a9d50fe](https://github.com/echoLC/rich-text-editor/commit/a9d50feda8b438329bff555b283b51994efd9d0d))
+
+* fix: 完善了插件 (a9d50fe)
+
 * fix: 添加keep-changelog插件 (2f13b67)
 * fix: 添加keep-changelog插件 (cc412bb)
 * fix: 添加keep-changelog插件 (efcc194)
