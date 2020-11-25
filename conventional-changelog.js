@@ -29,11 +29,7 @@ class ConventionalChangelog extends Plugin {
   }
 
   async getConventionalConfig() {
-    // const { increment, isPreRelease, preReleaseId } = this.config.getContext('version')
     const version = this.getContext('version')
-    console.log('version', version)
-
-    // this.setContext({ version })
 
     const previousTag = this.getContext('latestTag')
     const tagTemplate =
