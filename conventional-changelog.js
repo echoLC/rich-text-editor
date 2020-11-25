@@ -30,7 +30,7 @@ class ConventionalChangelog extends Plugin {
 
   async getConventionalConfig() {
     // const { increment, isPreRelease, preReleaseId } = this.config.getContext('version')
-    const version = this.context.getContext('version')
+    const version = this.config.getContext('version')
     console.log('version', version)
 
     // this.setContext({ version })
