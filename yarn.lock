@@ -1492,6 +1492,13 @@
   dependencies:
     "@types/node" ">= 8"
 
+"@release-it/keep-a-changelog@^2.1.0":
+  version "2.1.0"
+  resolved "https://registry.npmjs.org/@release-it/keep-a-changelog/-/keep-a-changelog-2.1.0.tgz#a19b37c205c07091cc79efdb9a0e268048dce501"
+  integrity sha512-ymVwWCSOliCT/U8lJwOd3AilMOUsjsPBuL0d78fnQQ33MtOh9g994rOrhOIybUYNM0FYUkW7VdNlt7kPJltMbQ==
+  dependencies:
+    detect-newline "^3.1.0"
+
 "@samverschueren/stream-to-observable@^0.3.0":
   version "0.3.1"
   resolved "https://registry.npmjs.org/@samverschueren/stream-to-observable/-/stream-to-observable-0.3.1.tgz#a21117b19ee9be70c379ec1877537ef2e1c63301"
@@ -4307,7 +4314,7 @@ detect-file@^1.0.0:
   resolved "https://registry.npmjs.org/detect-file/-/detect-file-1.0.0.tgz#f0d66d03672a825cb1b73bdb3fe62310c8e552b7"
   integrity sha1-8NZtA2cqglyxtzvbP+YjEMjlUrc=
 
-detect-newline@^3.0.0:
+detect-newline@^3.0.0, detect-newline@^3.1.0:
   version "3.1.0"
   resolved "https://registry.npmjs.org/detect-newline/-/detect-newline-3.1.0.tgz#576f5dfc63ae1a192ff192d8ad3af6308991b651"
   integrity sha512-TLz+x/vEXm/Y7P7wn1EJFNLxYpUD4TgMosxY6fAVJUnJMbupHBOncxyWUG9OpTaH9EBD7uFI5LfEgmMOc54DsA==
