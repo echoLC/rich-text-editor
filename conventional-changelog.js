@@ -11,30 +11,33 @@ class ConventionalChangelog extends Plugin {
     return options[namespace]
   }
 
-  async getChangelog(latestVersion) {
-    const { previousTag, currentTag } = await this.getConventionalConfig(latestVersion)
-    this.setContext({ previousTag, currentTag })
-    return this.generateChangelog()
-  }
+  // async getChangelog(latestVersion) {
+  //   const { previousTag, currentTag } = await this.getConventionalConfig(latestVersion)
+  //   this.setContext({ previousTag, currentTag })
+  //   return this.generateChangelog()
+  // }
 
   async bump(version) {
     this.setContext({ version })
-    // const { previousTag, currentTag } = await this.getConventionalConfig()
-    // this.setContext({ previousTag, currentTag })
-    // // return this.generateChangelog()
+    const { previousTag, currentTag } = await this.getConventionalConfig()
+    this.setContext({ previousTag, currentTag })
+    // return this.generateChangelog()
   }
 
-  getIncrementedVersion({ increment, latestVersion, isPreRelease, preReleaseId }) {
-    this.setContext({
-      latestVersion,
-      isPreRelease,
-      increment,
-      preReleaseId,
-    })
-  }
+  // getIncrementedVersion({ increment, latestVersion, isPreRelease, preReleaseId }) {
+  //   this.setContext({
+  //     latestVersion,
+  //     isPreRelease,
+  //     increment,
+  //     preReleaseId,
+  //   })
+  // }
 
-  async getConventionalConfig() {
+  async getConventionalConfig(latestVersion) {
     const version = this.context.version
+
+    // const { increment, isPreRelease, preReleaseId } = this.config.getContext('version');
+    // const version = await this.getIncrementedVersion({ increment, latestVersion, isPreRelease, preReleaseId });
 
     console.log('getIncrementedVersion', version)
 
