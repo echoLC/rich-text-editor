@@ -15,8 +15,9 @@ module.exports = {
     publish: false,
   },
   plugins: {
-    '@release-it/keep-a-changelog': {
-      filename: 'CHANGELOG.md',
+    './conventional-changelog.js': {
+      infile: 'CHANGELOG.md',
+      preset: 'angular',
     },
   },
 }
