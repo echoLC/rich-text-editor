@@ -21,7 +21,7 @@ class ConventionalChangelog extends Plugin {
     this.setContext({ version })
     const { previousTag, currentTag } = await this.getConventionalConfig()
     this.setContext({ previousTag, currentTag })
-    // return this.generateChangelog()
+    return this.generateChangelog()
   }
 
   // getIncrementedVersion({ increment, latestVersion, isPreRelease, preReleaseId }) {
